@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kQuery test</title>
+    <script src="kQuery.js"></script>
+</head>
+<body>
+    <div class="container"></div>
+
+    <script>
+        (function ($) {
+            const $container = $('.container');
+
+            const $p1 = $('<p>Testario Vargas</p>').addClass('is-test');
+
+            $container.append($p1);
+
+            $('<p>says muchias gracias</p>').appendTo($container);
+        }(window.kQuery));
+    </script>
+</body>
+</html>
