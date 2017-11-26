@@ -19,8 +19,8 @@ window.kQuery = (function () {
             return kQuery.createNodesObject(context.querySelectorAll(selector));
         }
 
-        static parseHTML(HTMLstring) {
-            return kQuery.createNodesObject(document.createRange().createContextualFragment(HTMLstring).children);
+        static parseHTML(HTMLString) {
+            return kQuery.createNodesObject(document.createRange().createContextualFragment(HTMLString).children);
         }
 
         static createNodesObject(nodes) {
@@ -33,14 +33,14 @@ window.kQuery = (function () {
         }
 
         // appending
-        append($element) {
-            kQuery.appending(this[0], kQuery.arrify($element));
+        append($children) {
+            kQuery.appending(this[0], kQuery.arrify($children));
 
             return this;
         }
 
-        appendTo($container) {
-            kQuery.appending($container[0], kQuery.arrify(this));
+        appendTo($parent) {
+            kQuery.appending($parent[0], kQuery.arrify(this));
 
             return this;
         }
