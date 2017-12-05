@@ -15,6 +15,10 @@ window.kQuery = (function () {
             }
         }
 
+        static pipe(initial, ...functions) {
+            return functions.reduce((soFar, fn) => fn(soFar, initial));
+        }
+
         static getBySelector(selector, context) {
             return $.createNodesObject(context.querySelectorAll(selector));
         }
