@@ -4,19 +4,15 @@ window.kQuery = (function () {
     class $ {
         constructor(selector, context = document.body) {
             switch (selector.slice(0, 1)) {
-            case '.':
-                Object.assign(this, $.getBySelector(selector, context));
-                return;
             case '<':
                 Object.assign(this, $.parseHTML(selector));
                 return;
+            case null:
+                return {length: 0};
             default:
-                console.log(`TODO: create null object`)
+                Object.assign(this, $.getBySelector(selector, context));
+                return;
             }
-        }
-
-        static pipe(initial, ...functions) {
-            return functions.reduce((soFar, fn) => fn(soFar, initial));
         }
 
         static getBySelector(selector, context) {
@@ -34,6 +30,10 @@ window.kQuery = (function () {
         // general utils
         static arrify(object) {
             return Array.from(object);
+        }
+
+        static pipe(initial, ...functions) {
+            return functions.reduce((soFar, fn) => fn(soFar, initial));
         }
 
         // appending
@@ -65,11 +65,27 @@ window.kQuery = (function () {
             return this;
         }
 
-        removeClass() {}
+        removeClass(className) {
+            $.arrify(this)
+                .forEach(item => {
+                    item.classList.remove(className);
+                });
 
-        toggleClass() {}
+            return this;
+        }
 
-        hasClass() {}
+        toggleClass(className, force) {
+            $.arrify(this)
+                .forEach(item => {
+                    item.classList.toggle(className, force);
+                });
+
+            return this;
+        }
+
+        hasClass(className) {
+            return $.arrify(this).some(item => item.classList.contains(className));
+        }
     }
 
     return (selector, context) => new $(selector, context);
