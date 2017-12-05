@@ -1,14 +1,14 @@
 window.kQuery = (function () {
     'use strict';
 
-    class kQuery {
+    class $ {
         constructor(selector, context = document.body) {
             switch (selector.slice(0, 1)) {
             case '.':
-                Object.assign(this, kQuery.getBySelector(selector, context));
+                Object.assign(this, $.getBySelector(selector, context));
                 return;
             case '<':
-                Object.assign(this, kQuery.parseHTML(selector));
+                Object.assign(this, $.parseHTML(selector));
                 return;
             default:
                 console.log(`TODO: create null object`)
@@ -16,11 +16,11 @@ window.kQuery = (function () {
         }
 
         static getBySelector(selector, context) {
-            return kQuery.createNodesObject(context.querySelectorAll(selector));
+            return $.createNodesObject(context.querySelectorAll(selector));
         }
 
         static parseHTML(HTMLString) {
-            return kQuery.createNodesObject(document.createRange().createContextualFragment(HTMLString).children);
+            return $.createNodesObject(document.createRange().createContextualFragment(HTMLString).children);
         }
 
         static createNodesObject(nodes) {
@@ -34,13 +34,13 @@ window.kQuery = (function () {
 
         // appending
         append($children) {
-            kQuery.appending(this[0], kQuery.arrify($children));
+            $.appending(this[0], $.arrify($children));
 
             return this;
         }
 
         appendTo($parent) {
-            kQuery.appending($parent[0], kQuery.arrify(this));
+            $.appending($parent[0], $.arrify(this));
 
             return this;
         }
@@ -53,8 +53,7 @@ window.kQuery = (function () {
 
         // class operations
         addClass(className) {
-            kQuery
-                .arrify(this)
+            $.arrify(this)
                 .forEach(item => {
                     item.classList.add(className);
                 });
@@ -69,5 +68,5 @@ window.kQuery = (function () {
         hasClass() {}
     }
 
-    return (selector, context) => new kQuery(selector, context);
+    return (selector, context) => new $(selector, context);
 }());
