@@ -34,7 +34,7 @@ window.kQuery = (function () {
         }
 
         static pipe(initial, ...functions) {
-            return functions.reduce((soFar, fn) => fn(soFar, initial));
+            return functions.reduce((soFar, fn) => fn(soFar), initial);
         }
 
         // appending
