@@ -3,6 +3,7 @@ window.kQuery = (function () {
 
     class $ {
         constructor(selector, context = document.body) {
+            // TODO: add element and nodeList handling
             switch (selector.slice(0, 1)) {
             case '<':
                 Object.assign(this, $.parseHTML(selector));
