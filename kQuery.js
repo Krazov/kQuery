@@ -49,6 +49,16 @@ window.kQuery = (function () {
             return this;
         }
 
+        // TODO
+        prepend() {
+            return this;
+        }
+
+        // TODO
+        prependTo() {
+            return this;
+        }
+
         static appending(parent, children) {
             children.forEach(child => {
                 parent.appendChild(child);
