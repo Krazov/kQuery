@@ -8,7 +8,8 @@ window.kQuery = (function () {
                 Object.assign(this, $.parseHTML(selector));
                 return;
             case null:
-                return {length: 0};
+                Object.assign(this, {length: 0});
+                return;
             default:
                 Object.assign(this, $.getBySelector(selector, context));
                 return;
@@ -33,7 +34,7 @@ window.kQuery = (function () {
         }
 
         static pipe(initial, ...functions) {
-            return functions.reduce((soFar, fn) => fn(soFar, initial));
+            return functions.reduce((soFar, fn) => fn(soFar), initial);
         }
 
         // appending
