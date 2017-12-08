@@ -18,7 +18,7 @@ _Sliema, Malta, December 9th, 2017_
 
 ## Purpose
 
-The main purpose of this project is my own education. I am going to explore which jQuery methods, and how easy, can be replicated with native functions only. (I did something similar with `Array.prototype.reduce` [here](https://medium.com/@Krazov/reduce-everything-a6f142f74eb1) a while back, inspired by Haskell tutorial, and I find this method going well with me.)
+The main purpose of this project is my own education. I am going to explore which jQuery methods, and how easy, can be replicated with native functions only. (I did something similar with `Array.prototype.reduce` [here](https://medium.com/@Krazov/reduce-everything-a6f142f74eb1) a while back, inspired by certain Haskell tutorial, and I find this method going well with me.)
 
 While a lot can be done natively, it requires sometimes more writing. Which leads us to wrapping them elaborate calls for our own sake. I usually was going back to jQuery at this point because I didn’t feel like writing wrapper was making any more sense than simply sticking with it. The other thing I want to train is writing this kind of tools. I decided not to check how jQuery itself achieves those goals; I will do that later, to compare it. I will be, though, using jQuery’s
 
